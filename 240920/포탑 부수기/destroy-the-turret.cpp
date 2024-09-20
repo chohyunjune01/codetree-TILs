@@ -28,17 +28,18 @@ bool is_active[MAX_N][MAX_N];
 // 구조체 turret을 정의해 관리합니다.
 struct Turret {
     int x, y, r, p;
+        bool operator < (const Turret& b) {
+            if (p != b.p) return p < b.p;
+            if (r != b.r) return r > b.r;
+            if (x + y != b.x + b.y) return x + y > b.x + b.y;
+            return a.y > b.y;
+    }
 };
 
 // 살아있는 포탑들을 관리합니다.
 vector<Turret> live_turret;
 
-bool operator < (const Turret &a, const Turret &b) {
-    if (a.p != b.p) return a.p < b.p;
-    if (a.r != b.r) return a.r > b.r;
-    if (a.x + a.y != b.x + b.y) return a.x + a.y > b.x + b.y;
-    return a.y > b.y;
-}
+
 // 턴을 진행하기 전 필요한 전처리를 정리해줍니다.
 void Init() {
     turn++;

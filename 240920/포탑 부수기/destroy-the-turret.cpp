@@ -32,7 +32,7 @@ struct Turret {
             if (p != b.p) return p < b.p;
             if (r != b.r) return r > b.r;
             if (x + y != b.x + b.y) return x + y > b.x + b.y;
-            return a.y > b.y;
+            return y > b.y;
     }
 };
 
